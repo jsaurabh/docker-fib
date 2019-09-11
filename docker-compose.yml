@@ -19,6 +19,8 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
+    depends_on:
+      - postgres
   client:
     build:
       dockerfile: Dockerfile.dev
