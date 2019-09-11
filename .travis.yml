@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jsaurabh/multi-docker-fib -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true jsaurabh/multi-docker-test npm test
+
+after_success:
+  - docker build -t jsaurabh/multi-client ./client
+  - docker build -t jsaurabh/multi-nginx ./nginx
+  - docker build -t jsaurabh/multi-server ./server
+  - docker build -t jsaurabh/multi-worker ./worker
+
+  - echo "$pwd" | docker login -u "$username" --password-stdin
+  - docker push jsaurabh/multi-client
+  - docker pushjsaurabh/multi-nginx 
+  - docker pushjsaurabh/multi-server
+  - docker pushjsaurabh/multi-worker
