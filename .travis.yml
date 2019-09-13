@@ -33,4 +33,4 @@ deploy:
   access_key_id:
     secure: "$key"
   secret_access_key:
-    secure: "$secure_key"
+    secure: "$secure_id"
