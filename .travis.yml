@@ -23,14 +23,14 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: us-east-1
-  app: docker-fib
-  env: DockerFib-env
-  bucket_name: elasticbeanstalk-us-east-1-239175025842
-  bucket_path: docker_multi
+  region: "us-east-1"
+  app: "docker-fib"
+  env: "DockerFib-env"
+  bucket_name: "elasticbeanstalk-us-east-1-239175025842"
+  bucket_path: "docker_multi"
   on:
     branch: master
   access_key_id:
-    secure: $key
+    secure: "$key"
   secret_access_key:
-    secure: $secure_key
+    secure: "$secure_key"
